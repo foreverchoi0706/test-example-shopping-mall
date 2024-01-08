@@ -1,13 +1,13 @@
 import {
   Box,
-  Typography,
+  CircularProgress,
+  Paper,
   Table,
   TableBody,
-  TableContainer,
-  Paper,
-  CircularProgress,
   TableCell,
+  TableContainer,
   TableRow,
+  Typography,
 } from '@mui/material';
 import React, { Suspense } from 'react';
 

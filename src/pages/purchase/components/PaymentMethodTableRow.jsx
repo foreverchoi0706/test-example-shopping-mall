@@ -1,13 +1,13 @@
 import {
-  Radio,
-  RadioGroup,
   FormControl,
   FormControlLabel,
+  Radio,
+  RadioGroup,
   TableCell,
   TableRow,
 } from '@mui/material';
 import React from 'react';
-import { useFormContext, Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 const PaymentMethodTableRow = () => {
   const { control } = useFormContext();

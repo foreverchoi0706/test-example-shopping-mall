@@ -1,5 +1,5 @@
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { Grid, Button } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import React from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,7 @@ import { useFilterStore } from '@/store/filter';
 import { useUserStore } from '@/store/user';
 import { pick } from '@/utils/common';
 
-const PRODUCT_PAGE_LIMIT = 20;
+const PRODUCT_PAGE_LIMIT = 50;
 
 const ProductList = ({ limit = PRODUCT_PAGE_LIMIT }) => {
   const navigate = useNavigate();

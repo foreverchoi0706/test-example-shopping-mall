@@ -1,4 +1,4 @@
-import { Typography, Button, Box } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,7 +6,7 @@ import { pageRoutes } from '../../../apiRoutes';
 
 import { useCartStore } from '@/store/cart';
 import { pick } from '@/utils/common';
-import { formatPrice, formatNumber } from '@/utils/formatter';
+import { formatNumber, formatPrice } from '@/utils/formatter';
 
 const PriceSummary = () => {
   const navigate = useNavigate();

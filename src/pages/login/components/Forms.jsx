@@ -1,15 +1,15 @@
 import {
-  FormControl,
-  TextField,
-  Button,
-  Link as MuiLink,
   Box,
+  Button,
+  FormControl,
+  Link as MuiLink,
+  TextField,
 } from '@mui/material';
 import Cookies from 'js-cookie';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { pageRoutes } from '@/apiRoutes';
 import { EMAIL_PATTERN, TOAST_ID } from '@/constants';

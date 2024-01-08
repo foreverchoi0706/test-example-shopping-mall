@@ -1,14 +1,8 @@
 import { screen, within } from '@testing-library/react';
-import { rest } from 'msw';
 import React from 'react';
 
 import NavigationBar from '@/pages/common/components/NavigationBar';
-import {
-  mockUseUserStore,
-  mockUseCartStore,
-} from '@/utils/test/mockZustandStore';
 import render from '@/utils/test/render';
-import { server } from '@/utils/test/setupTests';
 
 const navigateFn = vi.fn();
 

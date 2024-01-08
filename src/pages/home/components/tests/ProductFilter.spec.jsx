@@ -9,10 +9,15 @@ import render from '@/utils/test/render';
 const setMinPriceFn = vi.fn();
 const setMaxPriceFn = vi.fn();
 const setTitleFn = vi.fn();
-
+p;
 beforeEach(() => {});
 
-it('카테고리 목록을 가져온 후 카테고리 필드의 정보들이 올바르게 렌더링된다.', async () => {});
+it('카테고리 목록을 가져온 후 카테고리 필드의 정보들이 올바르게 렌더링된다.', async () => {
+  await render(<ProductFilter />);
+  await screen.findByText('카테고리');
+  screen.debug();
+  expect(1).toBe(1);
+});
 
 it('상품명을 수정하는 경우 setTitle 액션이 호출된다.', async () => {});
 

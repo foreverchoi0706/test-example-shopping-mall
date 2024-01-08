@@ -1,9 +1,9 @@
 import {
+  FormControl,
+  InputLabel,
   MenuItem,
   Select,
-  InputLabel,
   TableCell,
-  FormControl,
   TableRow,
 } from '@mui/material';
 import React from 'react';

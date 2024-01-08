@@ -1,12 +1,12 @@
 import {
   Box,
-  Typography,
+  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableRow,
-  Paper,
+  Typography,
 } from '@mui/material';
 import React from 'react';
 

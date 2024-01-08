@@ -1,4 +1,4 @@
-import { TableContainer, Table, TableBody, Paper } from '@mui/material';
+import { Paper, Table, TableBody, TableContainer } from '@mui/material';
 import React from 'react';
 
 import ProductInfoTableRow from '@/pages/cart/components/ProductInfoTableRow';

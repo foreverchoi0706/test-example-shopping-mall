@@ -1,4 +1,4 @@
-import { AppBar, Box, Toolbar, Typography, Skeleton } from '@mui/material';
+import { AppBar, Box, Skeleton, Toolbar, Typography } from '@mui/material';
 import Cookies from 'js-cookie';
 import React, { Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
