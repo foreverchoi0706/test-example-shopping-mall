@@ -1,8 +1,14 @@
 import { screen, within } from '@testing-library/react';
+import { rest } from 'msw';
 import React from 'react';
 
 import NavigationBar from '@/pages/common/components/NavigationBar';
+import {
+  mockUseCartStore,
+  mockUseUserStore,
+} from '@/utils/test/mockZustandStore.jsx';
 import render from '@/utils/test/render';
+import { server } from '@/utils/test/setupTests.js';
 
 const navigateFn = vi.fn();
 
@@ -17,12 +23,64 @@ vi.mock('react-router-dom', async () => {
   };
 });
 
-it('"Wish Mart" 텍스트 로고을 클릭할 경우 "/" 경로로 navigate가 호출된다.', async () => {});
+it('"Wish Mart" 텍스트 로고을 클릭할 경우 "/" 경로로 navigate가 호출된다.', async () => {
+  const { user } = await render(<NavigationBar />);
+  const wishMark = screen.getByText('Wish Mart');
+  await user.click(wishMark);
+  expect(navigateFn).toHaveBeenNthCalledWith(1, '/');
+});
 
 describe('로그인이 된 경우', () => {
-  beforeEach(() => {});
+  const userId = 10;
+  beforeEach(() => {
+    server.use(
+      rest.get('/user', (_, res, context) => {
+        return res(
+          context.status(200),
+          context.json({
+            email: 'maria@mail.com',
+            id: userId,
+            name: 'Maria',
+            password: '12345',
+          }),
+        );
+      }),
+    );
+    mockUseUserStore({ isLogin: true });
+    mockUseCartStore({
+      cart: {
+        id: 6,
+        title: 'Handmade Cotton Fish',
+        price: 100,
+        description:
+          'The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality',
+        images: [
+          'https://user-images.githubusercontent.com/35371660/230712070-afa23da8-1bda-4cc4-9a59-50a263ee629f.png',
+        ],
+        count: 3,
+      },
+      7: {
+        id: 7,
+        title: 'Awesome Concrete Shirt',
+        price: 50,
+        description:
+          'The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J',
+        images: [
+          'https://user-images.githubusercontent.com/35371660/230762100-b119d836-3c5b-4980-9846-b7d32ea4a08f.png',
+        ],
+        count: 4,
+      },
+    });
+  });
 
-  it('장바구니(담긴 상품 수와 버튼)와 로그아웃 버튼(사용자 이름: "Maria")이 노출된다.', async () => {});
+  it('장바구니(담긴 상품 수와 버튼)와 로그아웃 버튼(사용자 이름: "Maria")이 노출된다.', async () => {
+    await render(<NavigationBar />);
+    expect(screen.getByTestId('cart-icon')).toBeInTheDocument();
+    expect(screen.getByText('6')).toBeInTheDocument();
+    expect(
+      await screen.findByRole('button', { name: 'Maria' }),
+    ).toBeInTheDocument();
+  });
 
   it('장바구니 버튼 클릭 시 "/cart" 경로로 navigate를 호출한다.', async () => {
     const { user } = await render(<NavigationBar />);
